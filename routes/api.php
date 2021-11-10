@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\UserController;
 use Symfony\Component\Translation\MessageCatalogue;
 
 /*
@@ -18,4 +19,8 @@ use Symfony\Component\Translation\MessageCatalogue;
 
 Route::apiResource('/share', MessageController::class)->only([
     'index', 'store', 'destroy'
+]);
+
+Route::apiResource('/user', UserController::class)->only([
+    'store'
 ]);

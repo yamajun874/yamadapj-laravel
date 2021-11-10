@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use Facade\Ignition\Actions\ShareReportAction;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -34,22 +35,24 @@ class MessageController extends Controller
         ], 201);
     }
 
+    
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy(Message $share)
     {
-        $item = Message::where('id', $message->id)->delete();
+        $item = Message::where('id', $share->id)->delete();
         if($item){
             return response()->json([
-                'message' => 'Deleted successfully',
+                'message' => 'Deleted successfully'
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Not found',
+                'message' => 'Not found'
             ], 404);
         }
     }
