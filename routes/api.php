@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\LikeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use Symfony\Component\Translation\MessageCatalogue;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +24,9 @@ Route::apiResource('/share', MessageController::class)->only([
 ]);
 
 Route::apiResource('/user', UserController::class)->only([
+    'store'
+]);
+
+Route::apiResource('/like', LikeController::class)->only([
     'store'
 ]);

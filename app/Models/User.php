@@ -38,7 +38,5 @@ class User extends Authenticatable
         'uid' => 'required'
     );
         
-    public function likes(){
-        return $this->belongsToMany(Message::class);
-    }
+    
 }
