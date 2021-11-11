@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'uid'
+        'id'
     ];
 
     /**
@@ -35,7 +35,7 @@ class User extends Authenticatable
      * @var array
      */
     public static $rules = array(
-        'uid' => 'required'
+        'id' => 'required'
     );
         
     

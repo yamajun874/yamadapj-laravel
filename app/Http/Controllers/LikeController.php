@@ -26,10 +26,17 @@ class LikeController extends Controller
     public function store(Request $request)
     {
         $item = Like::create($request->all());
-        $likesCount = $item->count();
-        return response()->json([
-            'data' => $likesCount
-        ], 200);
+        if($item){
+            $likesCount = $item->count();
+            return response()->json([
+                'data' => $likesCount
+            ], 200);
+        } else {
+            Like::where('user_id', $request->user_id)->delete();
+            return response()->json([
+                'message' => 'Deleted successfully'
+            ], 200);
+        }
     }
 
     /**

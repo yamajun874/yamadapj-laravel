@@ -14,7 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $items = User::all();
+        return response()->json([
+            'data' => $items
+        ], 200);
     }
 
     /**

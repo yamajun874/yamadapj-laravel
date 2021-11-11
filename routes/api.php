@@ -24,7 +24,7 @@ Route::apiResource('/share', MessageController::class)->only([
 ]);
 
 Route::apiResource('/user', UserController::class)->only([
-    'store'
+    'index' , 'store'
 ]);
 
 Route::apiResource('/like', LikeController::class)->only([
