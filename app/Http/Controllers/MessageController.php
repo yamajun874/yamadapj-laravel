@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use Facade\Ignition\Actions\ShareReportAction;
 use Illuminate\Http\Request;
+use App\Models\Like;
 
 class MessageController extends Controller
 {
@@ -35,7 +36,17 @@ class MessageController extends Controller
         ], 201);
     }
 
-    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Message  $message
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Message $share)
+    {
+        //
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -55,5 +66,16 @@ class MessageController extends Controller
                 'message' => 'Not found'
             ], 404);
         }
+    }
+
+    public function count()
+    {
+        $items = Message::all();
+        foreach ($items as $item) {
+            $count = Like::with('user')->get();
+        };
+        return response()->json([
+            'count' => $count
+        ], 200);
     }
 }

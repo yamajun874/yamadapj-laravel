@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Like;
 use Illuminate\Http\Request;
 
+
 class LikeController extends Controller
 {
     /**
@@ -25,11 +26,16 @@ class LikeController extends Controller
      */
     public function store(Request $request)
     {
-        $item = Like::create($request->all());
-        if($item){
-            $likesCount = $item->count();
+        $exists = Like::where('user_id', $request->user_id)->exists();
+        if($exists){
+            Like::where('user_id', $request->user_id)->delete();
             return response()->json([
-                'data' => $likesCount
+                'message' => 'Deleted successfully'
+            ], 200);
+        } else {
+            $item = Like::create($request->all());
+            return response()->json([
+                'data' => $item
             ], 200);
         }
     }
