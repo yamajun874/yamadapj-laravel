@@ -17,7 +17,13 @@ class MessageController extends Controller
     public function index()
     {
         $items = Message::all();
+        
+        foreach ($items as $item) {
+            $item->count = Like::with('user')->get();
+            $item->count->count();
+        };
         return response()->json([
+            'count' => $item->count->count(),
             'data' => $items
         ], 200);
     }
@@ -68,14 +74,5 @@ class MessageController extends Controller
         }
     }
 
-    public function count()
-    {
-        $items = Message::all();
-        foreach ($items as $item) {
-            $count = Like::with('user')->get();
-        };
-        return response()->json([
-            'count' => $count
-        ], 200);
-    }
+    
 }

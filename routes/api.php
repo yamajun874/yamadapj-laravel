@@ -30,5 +30,3 @@ Route::apiResource('/user', UserController::class)->only([
 Route::apiResource('/like', LikeController::class)->only([
     'store'
 ]);
-
-Route::apiResource('/count', [MessageController::class, 'count']);
