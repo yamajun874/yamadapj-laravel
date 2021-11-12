@@ -16,5 +16,7 @@ class Message extends Model
         'message' => 'required|max:120'
     );
 
-    
+    public function likes(){
+        return $this->belongsToMany('App\Models\User')->withTimestamps();
+    }
 }

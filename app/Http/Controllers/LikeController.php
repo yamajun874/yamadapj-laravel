@@ -31,11 +31,6 @@ class LikeController extends Controller
             return response()->json([
                 'data' => $likesCount
             ], 200);
-        } else {
-            Like::where('user_id', $request->user_id)->delete();
-            return response()->json([
-                'message' => 'Deleted successfully'
-            ], 200);
         }
     }
 

@@ -37,6 +37,11 @@ class User extends Authenticatable
     public static $rules = array(
         'id' => 'required'
     );
+
+    public function likes()
+    {
+        return $this->belongsToMany('App\Models\Message')->withTimestamps();
+    }
         
     
 }

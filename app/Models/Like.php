@@ -16,13 +16,5 @@ class Like extends Model
         'message_id' => 'required'
     );
 
-    public function user()
-    {
-        return $this->belongsTo('App/User');
-    }
-
-    public function message()
-    {
-        return $this->belongsTo('App/Message');
-    }
+    
 }
